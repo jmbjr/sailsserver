@@ -7,6 +7,10 @@
 </div>
 
 <script>
+    var MessageModel = Backbone.Model.extend({
+        urlRoot: '/messages',
+    });
+
     var SailsCollection = Backbone.Collection.extend({
         sailsCollection: "",
         socket: null,
@@ -46,15 +50,6 @@
         model: MessageModel
     });
 
-    var MessageModel = Backbone.Model.extend({
-        urlRoot: '/messages',
-    });
- 
-    var MessageCollection = Backbone.Collection.extend({
-        url: '/messages',
-        model: MessageModel,
-    });
- 
     var messages = new MessageCollection();
     messages.fetch();
  
