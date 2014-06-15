@@ -41,6 +41,10 @@
         }
     });
 
+    var MessageCollection = SailsCollection.extend({
+        sailsCollection: 'messages',
+        model: MessageModel
+    });
 
     var MessageModel = Backbone.Model.extend({
         urlRoot: '/messages',
