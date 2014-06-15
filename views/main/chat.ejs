@@ -30,11 +30,13 @@
          
                     this.socket.on("message", _.bind(function(msg){
                         var m = msg.verb;
+                        console.log(m);
                         if (m === "create") {
                             this.add(msg.data);
                         } else if (m === "update") {
                             this.get(msg.id).set(msg.data);
                         } else if (m === "destroy") {
+                            console.log("destroy");
                             this.remove(this.get(msg.id));
                         }
                     }, this));
