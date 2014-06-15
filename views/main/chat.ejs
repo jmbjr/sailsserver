@@ -29,13 +29,13 @@
                     }, this));
          
                     this.socket.on("message", _.bind(function(msg){
-                        var m = msg.uri.split("/").pop();
+                        var m = msg.verb;
                         if (m === "create") {
                             this.add(msg.data);
                         } else if (m === "update") {
-                            this.get(msg.data.id).set(msg.data);
+                            this.get(msg.id).set(msg.data);
                         } else if (m === "destroy") {
-                            this.remove(this.get(msg.data.id));
+                            this.remove(this.get(msg.id));
                         }
                     }, this));
                 }, this));
@@ -47,7 +47,7 @@
 
     var MessageCollection = SailsCollection.extend({
         sailsCollection: 'messages',
-        model: MessageModel
+        model: MessageModel,
     });
 
     var messages = new MessageCollection();
